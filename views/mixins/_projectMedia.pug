@@ -1,0 +1,7 @@
+mixin projectMedia()
+
+  form.form(action=`/project/${slug}/media` method = "POST" enctype="multipart/form-data")
+    .row
+      label Project Header
+      input(type="file" id="photo" class="sub-nav-input" name="photo" accept="image/gif, image/png, image/jpeg")
+    input(type="submit" value="Next")

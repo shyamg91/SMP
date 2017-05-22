@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  .inner
+    h2(class="medium")= `Welcome, ${user.name}`
+    .new-project
+      a(href="/project/new")
+        span
+          i(class="fa fa-plus fa-2x")
+          h2(class="big") Add Your Project

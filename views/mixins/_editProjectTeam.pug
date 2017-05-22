@@ -1,0 +1,7 @@
+mixin editProjectTeam(project = {})
+  form.form(method="POST", action=`/project/${project._id}/edit/team`)
+    .row
+      label(for="team")
+      input(type="text" name="team" value=project.team.join(','))
+    input(type="submit" value="Submit")
+    

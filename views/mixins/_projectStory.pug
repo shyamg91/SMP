@@ -1,0 +1,7 @@
+mixin projectStory(project = {})
+  
+  form.form(method="POST" action=`/project/${slug}/story`)
+    .row
+      label(for="project-story") Story
+      textarea(type="text" name="story" class="sub-nav-input" placeholder="Tell us more about your project") #{project.story}
+    input(type="submit" value="Next")

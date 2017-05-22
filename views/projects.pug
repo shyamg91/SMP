@@ -1,0 +1,9 @@
+extends layout
+
+include mixins/_projectCard
+
+block content
+    h2= title
+    .projects
+      each project in projects
+        +projectCard(project)

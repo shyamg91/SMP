@@ -1,0 +1,93 @@
+.hide {
+  text-indent: -999999px;
+  font-size: 0;
+}
+
+.button {
+  border: 0;
+  background: $yellow;
+  color: $black;
+  font-family: 'Panama';
+  font-weight: 600;
+}
+
+.avatar {
+ min-width: 40px;
+ height: 40px;
+ border-radius: 50%;
+ align-self: center;
+}
+
+.card {
+  background: white;
+  padding: 5rem;
+  box-shadow: 0 1px 10px rgba(0,0,0,0.15);
+}
+
+.medium{
+  font-size: 18px;
+  text-transform: capitalize
+}
+
+.small{
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+.big{
+  font-size: 24px;
+  text-transform: capitalize;
+}
+
+.row{
+    flex-direction: row;
+    display: flex;
+    padding: 15px 0px;
+    justify-content: space-between;
+}
+
+.sub-nav-input{
+  width: 60%;
+  border-width: 0px 0px 1px 0px;
+  outline: none;
+}
+
+.custom-file-upload{
+    width: 60%;
+    border: 1px dotted;
+    padding: 15px 0px;
+    text-align: center;
+    cursor: pointer;
+}
+
+pre.error {
+  padding: 5rem;
+  background: white;
+  line-height: 3;
+  white-space: pre-line;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: $black;
+  opacity: .6;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: $black;
+   opacity: .6;
+   font-size: 12px;
+   margin-bottom: 10px;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: $black;
+   opacity: .6;
+   font-size: 12px;
+   margin-bottom: 10px;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: $black;
+   opacity: .6;
+   font-size: 12px;
+   margin-bottom: 10px;
+}

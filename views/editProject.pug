@@ -1,0 +1,20 @@
+extends layout
+include mixins/_editProjectInfo
+include mixins/_editProjectStory
+include mixins/_editProjectTeam
+
+block content
+  .inner.form
+    nav.sub-nav
+      span.sub-nav__link(class=(currentPath.includes('info') ? 'sub-nav--active' : '')) 
+        a(href="/project/new") Info 
+      span.sub-nav__link(class=(currentPath.includes('story') ? 'sub-nav--active' : '')) 
+        a(href=`/project/${slug}/story`) Story 
+      span.sub-nav__link(class=(currentPath.includes('team') ? 'sub-nav--active' : '')) 
+        a(href=`/project/${slug}/team`) Team
+    if currentPath.includes('info')
+      +editProjectInfo(project)
+    else if currentPath.includes('story')
+      +editProjectStory(project)
+    else if currentPath.includes('team')
+      +editProjectTeam(project)
