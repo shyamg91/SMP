@@ -3,6 +3,17 @@ extends layout
 include mixins/_projectCard
 
 block content
+    .inner
+      ul.tags
+        each t in tags
+          li.tag
+            a.tag__link(href=`/projects/${t._id}` class=(t._id === tag? 'tag__link--active' : ''))
+              span.tag__text= t._id
+              span.tag__count= t.count
+        li.tag
+          a.tag__link(href=`/projects` class=('All' === 'All'? 'tag__link--active' : ''))
+            span.tag__text  All
+            span.tag__count 
     h2= title
     .projects
       each project in projects

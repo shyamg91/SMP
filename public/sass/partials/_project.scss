@@ -1,12 +1,18 @@
 .projects {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:space-between;
+  width: 100%;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 10px 0px;
+    @media all and (max-width) {
+      margin: 10px;
+    }
 }
 
 .project {
   background:white;
-  margin: 10px 0;
+  margin: 10px 15px;
   width:30%;
   box-shadow: $shad;
   &--wide {

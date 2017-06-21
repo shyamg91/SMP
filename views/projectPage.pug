@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  .single
+    .single__hero
+     img.single__image(src = `${project.cover || '/uploads/store.png'}`)
+     h2.title.title--single(style={'color':'white'})= project.name
+
+  .single__details.inner
+    h2= project.tagline
+    p= project.story
+    
+    if project.tags
+      ul.tags
+        each tag in project.tags
+          li.tag
+            a.tag__link()
+              span.tag__text #{tag}

@@ -12,9 +12,18 @@ const projectSchema = new Schema({
   photos: [String],
   story: String,
   tagline: String,
+  tags: [String],
   team: [String],
-  user: String
+  user: String,
+  created: {
+    type: Date
+  },
 });
+
+projectSchema.index({
+  name: 'text',
+  description: 'text'
+})
 
 projectSchema.pre('save', async function (next) {
   if (!this.isModified('name')) {
@@ -31,5 +40,25 @@ projectSchema.pre('save', async function (next) {
   }
   next();
 })
+
+projectSchema.statics.getTagsList = function () {
+  return this.aggregate([
+    {
+      $unwind: '$tags'
+    },
+    {
+      $group: {
+        _id: '$tags',
+        count: {
+          $sum: 1
+        }
+      }
+    }, {
+      $sort: {
+        count: -1
+      }
+    }
+  ]);
+}
 
 module.exports = mongoose.model('Project', projectSchema);

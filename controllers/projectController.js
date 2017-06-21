@@ -6,7 +6,7 @@ const jimp = require('jimp');
 const uuid = require('uuid');
 const aws = require('aws-sdk');
 const multerS3 = require('multer-s3');
-aws.config.loadFromPath('./handlers/awsConfig.js'); 
+aws.config.loadFromPath('./handlers/awsConfig.js');
 const s3 = new aws.S3();
 
 var upload = multer({
@@ -43,9 +43,9 @@ exports.createProject = async (req, res) => {
     tagline: req.body.tagline
   })).save();
   const user = await User.findOne({
-    '_id' : req.user._id
+    '_id': req.user._id
   });
-  if(!user.projects || user.projects.length === 0){
+  if (!user.projects || user.projects.length === 0) {
     user.projects = [];
   }
   user.projects.push(project._id.toString());
@@ -59,7 +59,8 @@ exports.addProjectStory = async (req, res) => {
   const project = await Project.findOne({
     slug: req.params.slug
   });
-
+  console.log(req.body);
+  project.tags = req.body.tags;
   project.story = req.body.story;
   await project.save();
   res.redirect(`/project/${project.slug}/media`);
@@ -77,9 +78,9 @@ exports.uploadMedia = async (req, res, next) => {
   res.redirect(`/project/${project.slug}/team`);
 }
 
-exports.addProjectTeam = async (req,res) => {
+exports.addProjectTeam = async (req, res) => {
   const project = await Project.findOne({
-    'slug' : req.params.slug
+    'slug': req.params.slug
   });
 
   const team = req.body.team.split(',');
@@ -89,28 +90,34 @@ exports.addProjectTeam = async (req,res) => {
   res.redirect('/projects');
 }
 
-exports.getProjects = async (req,res) => {
-  const projects = await Project.find({});
-  console.log(projects);
-  res.render('projects',{
-    'title' : 'Projects',
-    projects
+exports.getProjects = async (req, res) => {
+  const tag = req.params.tag;
+  const tagQuery = tag || { $exists: true }
+  const tagsPromise = Project.getTagsList();
+  const projectPromise = Project.find({ tags: tagQuery });
+  const [tags, projects] = await Promise.all([tagsPromise, projectPromise]);
+  console.log(tags);
+  res.render('projects', {
+    'title': 'Projects',
+    tags,
+    projects,
+    tag
   });
 }
 
-exports.editProject = async (req,res) => {
+exports.editProject = async (req, res) => {
   const project = await Project.findOne({
-    '_id' : req.params.id
+    '_id': req.params.id
   });
   console.log(project);
-  res.render('editProject',{
+  res.render('editProject', {
     project
   })
 }
 
-exports.editProjectInfo = async (req,res) => {
+exports.editProjectInfo = async (req, res) => {
   const project = await Project.findOne({
-    '_id' : req.params.id
+    '_id': req.params.id
   });
 
   project.name = req.body.name;
@@ -120,9 +127,9 @@ exports.editProjectInfo = async (req,res) => {
   res.redirect(`/project/${project._id}/edit/story`)
 }
 
-exports.editProjectStory = async (req,res) => {
+exports.editProjectStory = async (req, res) => {
   const project = await Project.findOne({
-    '_id' : req.params.id
+    '_id': req.params.id
   });
 
   project.story = req.body.story;
@@ -131,15 +138,15 @@ exports.editProjectStory = async (req,res) => {
   res.redirect(`/project/${project._id}/edit/team`)
 }
 
-exports.editProjectMedia = async (req,res) => {
+exports.editProjectMedia = async (req, res) => {
   const project = await Project.findOne({
-    '_id' : req.params.id
+    '_id': req.params.id
   });
   res.redirect(`/project/${project._id}/edit/team`)
 }
-exports.editProjectTeam = async (req,res) => {
+exports.editProjectTeam = async (req, res) => {
   const project = await Project.findOne({
-    '_id' : req.params.id
+    '_id': req.params.id
   });
 
   const team = req.body.team.split(',');
@@ -147,4 +154,31 @@ exports.editProjectTeam = async (req,res) => {
 
   await project.save();
   res.redirect(`/projects`)
+}
+
+exports.searchProjects = async (req, res) => {
+  const projects = await Project.find({
+    $text: {
+      $search: req.query.q
+    }
+  }, {
+      score: {
+        $meta: 'textScore'
+      }
+    }).sort({
+      score: {
+        $meta: 'textScore'
+      }
+    });
+  res.json(projects)
+}
+
+exports.getProjectPage = async (req, res) => {
+  const project = await Project.findOne({
+    'slug': req.params.slug
+  });
+  console.log(project);
+  res.render('projectPage', {
+    project
+  });
 }

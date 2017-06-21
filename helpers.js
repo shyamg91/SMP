@@ -22,5 +22,5 @@ exports.siteName = `Support My Project`;
 
 exports.menu = [
   { slug: '/projects', title: 'Discover projects' },
-  { slug: '/project/new', title: 'Share a project' }
+  { slug: '/project/create/new', title: 'Share a project' }
 ];
