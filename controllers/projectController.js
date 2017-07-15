@@ -40,7 +40,8 @@ exports.getProjectForm = (req, res) => {
 exports.createProject = async (req, res) => {
   const project = await (new Project({
     name: req.body.name,
-    tagline: req.body.tagline
+    tagline: req.body.tagline,
+    user: req.user._id
   })).save();
   const user = await User.findOne({
     '_id': req.user._id

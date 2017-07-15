@@ -3,9 +3,10 @@ mixin projectCard(project = {})
     .project__hero
       .project__actions
         .project__action.project__action--edit
-          a(href=`/project/${project._id}/edit/info`)
-            != h.icon('pencil')
-      img(src=`${project.cover || 'store.png'}`)
+          if user._id == project.user
+            a(href=`/project/${project._id}/edit/info`)
+              != h.icon('pencil')
+      img(src=`${project.cover || '/uploads/store.png'}`)
       h2.title 
         a(href=`/project/${project.slug}`) #{project.name}
     .store__details

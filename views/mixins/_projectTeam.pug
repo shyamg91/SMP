@@ -2,6 +2,6 @@ mixin projectTeam()
   form.form(method="POST", action=`/project/${slug}/team`)
     .row
       label(for="team")
-      input(type="text" name="team")
+      input(type="text" name="team" required)
     input(type="submit" value="Submit")
     

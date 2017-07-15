@@ -3,8 +3,8 @@ mixin projectInfo(project={})
   form.form(method="POST" action="/project/new")
     .row
       label(for="project-name") Project name
-      input(type="text" name="name" class="sub-nav-input" placeholder="Enter the name of your project" value=project.name)
+      input(type="text" name="name" class="sub-nav-input" required placeholder="Enter the name of your project" value=project.name)
     .row
       label(for="project-name") Project Tagline
-      textarea(type="text" name="tagline" class="sub-nav-input" placeholder="Give your project a tagline") #{project.tagline}
+      textarea(type="text" name="tagline" class="sub-nav-input" required placeholder="Give your project a tagline") #{project.tagline}
     input(type="submit" value="Next")
