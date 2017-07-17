@@ -1,4 +1,18 @@
 extends layout
 
+include mixins/_projectCard
+
 block content
-    h2= title
+    .main
+        .col-1-2(style="background-image : url(http://krownthemes.com/wp-content/uploads/sites/10/2014/08/b0.jpg);margin-top:135px;")
+            h2(style="color:white;margin-top:250px;") Discover Projects
+            .alt-button
+                a(href="/projects" style="color:white;") Discover
+        .col-1-2(style="background-image : url(http://krownthemes.com/wp-content/uploads/sites/10/2014/08/b1.jpg);margin-top:135px;")
+            h2(style="color:white;margin-top:250px;") Share A Project
+            .alt-button
+                a(href="/project/create/new" style="color:white;") Share
+    h2 Projects
+    .projects
+      each project in projects
+        +projectCard(project)

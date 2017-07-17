@@ -2,16 +2,20 @@ extends layout
 
 block content
   .inner
-    form.form(action="/register" method="POST")
-      h2 Register
-      label(for="name") Name
-      input(type="text" name="name" placeholder="Enter your name" required)
-      label(for="email") Email 
-      input(type="email" name="email" placeholder="Enter your email" required)
-      label(for="password") Password
-      input(type="password" name="password")
-      label(for="password-confirm") Confirm Password
-      input(type="password" name="password-confirm")
-      input.button(type="submit" value="Submit")
-      <p>Sign up with:</p>
-      <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a>
+    form.form.flex(action="/register" method="POST")
+      .col-1-2
+        h2 Register
+        label(for="name") Name
+        input(type="text" name="name" placeholder="Enter your name" required)
+        label(for="email") Email 
+        input(type="email" name="email" placeholder="Enter your email" required)
+        label(for="password") Password
+        input(type="password" name="password")
+        label(for="password-confirm") Confirm Password
+        input(type="password" name="password-confirm")
+        input.button(type="submit" value="Submit")
+      .col-1-2(style="text-align: center;margin-top: 44px;")
+        p Sign up with:
+        a(href="/auth/facebook" class="btn btn-primary" style="background: #4267b2;color:white;padding: 10px 20px;border-radius: 4px;")
+          span(class="fa fa-facebook" style="margin:0px 10px;") 
+          span() Facebook

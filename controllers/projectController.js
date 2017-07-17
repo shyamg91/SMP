@@ -30,6 +30,15 @@ var upload = multer({
   })
 });
 
+exports.getHomePage = async (req, res) => {
+  const projects = await Project.find({});
+  console.log(projects);
+  res.render('index', {
+    title: 'Support My Project',
+    projects
+  })
+}
+
 exports.getProjectForm = (req, res) => {
   res.render('project', {
     title: 'Tell us more',

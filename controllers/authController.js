@@ -30,6 +30,6 @@ exports.isLoggedIn = (req, res, next) => {
     return;
   }
   req.flash('error', 'Whoops you need to login before you can create a project')
-  res.redirect('/');
+  res.redirect('/register');
 
 }

@@ -7,6 +7,33 @@ body {
   background:#efefef;
 }
 
+.main{
+        display: flex;
+    width: 100%;
+    height: 754px;
+    text-align: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: -185px;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    @media all and (max-width:430px){
+      display: block;
+    }
+}
+
+.flex{
+  display: flex;
+  @media all and (max-width:435px) {
+    display: block;
+  }
+}
+.col-1-2{
+      width: 50%;
+    flex: 1;
+    background-repeat: no-repeat;
+}
+
 .inner {
   max-width:900px;
   margin: 50px auto;

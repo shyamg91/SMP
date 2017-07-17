@@ -1,15 +1,13 @@
 const express = require('express');
 const router = express.Router();
+var mongoose = require('mongoose');
+const Project = mongoose.model('Project');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
 const projectController = require('../controllers/projectController');
 
 // Do work here
-router.get('/', (req, res) => {
-  res.render('index', {
-    title: 'Support My Project'
-  })
-});
+router.get('/', projectController.getHomePage);
 
 router.get('/register', userController.registerForm)
 router.post('/register',
