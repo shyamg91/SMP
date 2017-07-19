@@ -5,6 +5,9 @@ mixin editProjectStory(project = {})
       label(for="project-story") Story
       textarea(type="text" name="story" class="sub-nav-input" placeholder="Tell us more about your project") #{project.story}
     .row
+      label(for="project-story") Wants/Need
+      textarea(type="text" name="need" class="sub-nav-input" placeholder="What is the one ask that you have that you would like to put out there" required) #{project.need}
+    .row
       - const choices = ['Youth', 'Environment Friendly', 'Social', 'Community']
       - const tags = project.tags || []
       label(for="project-tags") Tags

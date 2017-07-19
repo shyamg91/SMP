@@ -2,14 +2,17 @@ mixin projectStory(project = {})
   
   form.form(method="POST" action=`/project/${slug}/story`)
     .row
-      label(for="project-story") Story
+      label(for="project-story") Tell us more
       textarea(type="text" name="story" class="sub-nav-input" placeholder="Tell us more about your project" required) #{project.story}
     .row
-      - const choices = ['Youth', 'Environment Friendly', 'Social', 'Community']
+      label(for="project-story") Wants/Need
+      textarea(type="text" name="need" class="sub-nav-input" placeholder="What is the one ask that you have that you would like to put out there" required) #{project.need}
+    .row
+      - const choices = ['Youth', 'Environment Friendly', 'Social', 'Community','FFTF17']
       label(for="project-tags") Tags
-      ul.tags
+      ul.tags(style="width:500px;")
         each tag in choices
-          .tag.tag__choice
+          .tag.tag__choice(style="margin:4px;")
             input(type="checkbox" id=tag value=tag name="tags")
             label(for="choice")=  tag
     input(type="submit" value="Next")

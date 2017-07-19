@@ -11,7 +11,9 @@ const projectSchema = new Schema({
   cover: String,
   photos: [String],
   story: String,
+  location: String,
   tagline: String,
+  need: String,
   tags: [String],
   team: [String],
   user: String,
@@ -22,7 +24,8 @@ const projectSchema = new Schema({
 
 projectSchema.index({
   name: 'text',
-  description: 'text'
+  description: 'text',
+  location: 'text'
 })
 
 projectSchema.pre('save', async function (next) {

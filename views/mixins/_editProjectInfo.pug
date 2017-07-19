@@ -5,6 +5,9 @@ mixin editProjectInfo(project={})
       label(for="project-name") Project name
       input(type="text" name="name" class="sub-nav-input" placeholder="Enter the name of your project" value=project.name)
     .row
-      label(for="project-name") Project Tagline
+      label(for="project-name") Project Summary
       textarea(type="text" name="tagline" class="sub-nav-input" placeholder="Give your project a tagline") #{project.tagline}
+    .row
+      label(for="project-name") Location where the project is based
+      input(type="text" name="location" class="sub-nav-input" required placeholder="Where is your project based out of" value=project.location)
     input(type="submit" value="Next")

@@ -2,9 +2,12 @@ mixin projectInfo(project={})
 
   form.form(method="POST" action="/project/new")
     .row
-      label(for="project-name") Project name
+      label(for="project-name") Project Name
       input(type="text" name="name" class="sub-nav-input" required placeholder="Enter the name of your project" value=project.name)
     .row
-      label(for="project-name") Project Tagline
-      textarea(type="text" name="tagline" class="sub-nav-input" required placeholder="Give your project a tagline") #{project.tagline}
+      label(for="project-name") Project Summary
+      textarea(type="text" name="tagline" class="sub-nav-input" required placeholder="140 character explanation of your project") #{project.tagline}
+    .row
+      label(for="project-name") Location where the project is based
+      input(type="text" name="location" class="sub-nav-input" required placeholder="Where is your project based out of" value=project.location)
     input(type="submit" value="Next")

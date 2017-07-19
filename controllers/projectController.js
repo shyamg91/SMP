@@ -32,7 +32,6 @@ var upload = multer({
 
 exports.getHomePage = async (req, res) => {
   const projects = await Project.find({});
-  console.log(projects);
   res.render('index', {
     title: 'Support My Project',
     projects
@@ -50,6 +49,7 @@ exports.createProject = async (req, res) => {
   const project = await (new Project({
     name: req.body.name,
     tagline: req.body.tagline,
+    location: req.body.location,
     user: req.user._id
   })).save();
   const user = await User.findOne({
@@ -72,6 +72,7 @@ exports.addProjectStory = async (req, res) => {
   console.log(req.body);
   project.tags = req.body.tags;
   project.story = req.body.story;
+  project.need = req.body.need;
   await project.save();
   res.redirect(`/project/${project.slug}/media`);
 }
@@ -132,7 +133,7 @@ exports.editProjectInfo = async (req, res) => {
 
   project.name = req.body.name;
   project.tagline = req.body.tagline;
-
+  project.location = req.body.location;
   await project.save();
   res.redirect(`/project/${project._id}/edit/story`)
 }
@@ -143,7 +144,8 @@ exports.editProjectStory = async (req, res) => {
   });
 
   project.story = req.body.story;
-
+  project.need = req.body.need
+  project.tags = req.body.tags;
   await project.save();
   res.redirect(`/project/${project._id}/edit/team`)
 }
@@ -187,7 +189,6 @@ exports.getProjectPage = async (req, res) => {
   const project = await Project.findOne({
     'slug': req.params.slug
   });
-  console.log(project);
   res.render('projectPage', {
     project
   });
