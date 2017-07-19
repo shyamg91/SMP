@@ -7,12 +7,15 @@ block content
      h2.title.title--single(style={'color':'white'})= project.name
 
   .single__details.inner
-    h2= project.tagline
-    h4= project.story
-
-    if project.tags
-      ul.tags
-        each tag in project.tags
-          li.tag
-            a.tag__link()
-              span.tag__text #{tag}
+    h2(style="font-size:32px;font-weight:600;")  Project Summary
+    p(style="font-size:18px;font-weight:100;")= project.tagline
+    h2(style="font-size:32px;font-weight:600;")  More about the Project
+    p(style="font-size:18px;font-weight:100;")= project.story
+    h2(style="font-size:32px;font-weight:600;")  The current ask of the Project
+    p(style="font-size:18px;font-weight:100;")= project.need
+    //- if project.tags
+    //-   ul.tags
+    //-     each tag in project.tags
+    //-       li.tag
+    //-         a.tag__link()
+    //-           span.tag__text #{tag}
