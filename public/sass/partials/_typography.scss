@@ -45,7 +45,7 @@ p {
   font-size: 40px;
   z-index: 2;
   line-height:1.1;
-  transform: skew(0, -3deg);
+  // transform: skew(0, -3deg);
   &--long {
     font-size: 30px;
   }
@@ -59,14 +59,14 @@ p {
     display: block;
     position: absolute;
     z-index: -1;
-    transform:skew(-5deg)
+    // transform:skew(-5deg)
   }
   line-height:1.1;
   // inline link inside
   a {
     border-bottom: 0;
     $yellowa: rgba($yellow,0.8);
-    background-image: linear-gradient(to right, $yellowa 100%, $yellowa 50%);
+    // background-image: linear-gradient(to right, $yellowa 100%, $yellowa 50%);
   }
 }
 
