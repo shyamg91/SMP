@@ -8,8 +8,9 @@ mixin editProjectStory(project = {})
       label(for="project-story") Wants/Need
       textarea(type="text" name="need" class="sub-nav-input" placeholder="What is the one ask that you have that you would like to put out there" required) #{project.need}
     .row
-      - const choices = ['Youth', 'Environment Friendly', 'Social', 'Community']
+      - const choices = ['Youth', 'Environment Friendly', 'Social', 'Community','FFTF17']
       - const tags = project.tags || []
+      pre= h.dump(project.tags)
       label(for="project-tags") Tags
     ul.tags
       each tag in choices

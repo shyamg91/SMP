@@ -1156,6 +1156,13 @@ label {
     border: none;
     transition: background .3s; }
 
+.alt-main {
+  margin-top: 60px;
+  text-align: center;
+  padding: 15px;
+  color: white;
+  background: #4a5e6f; }
+
 .avatar {
   min-width: 40px;
   height: 40px;

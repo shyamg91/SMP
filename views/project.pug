@@ -5,7 +5,6 @@ include mixins/_projectMedia
 include mixins/_projectTeam
 
 block content
-  pre= h.dump(req.params)
   .inner.form
     nav.sub-nav
       span.sub-nav__link(class=(currentPath.includes('new') ? 'sub-nav--active' : '')) 

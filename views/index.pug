@@ -12,7 +12,11 @@ block content
             h2(style="color:white;margin-top:250px;") Share A Project
             .alt-button
                 a(href="/project/create/new" style="color:white;") Share
-    h2 Projects
+    h2(style="padding:0px 16px;") Projects
     .projects
       each project in projects
         +projectCard(project)
+    .alt-main
+        h2 Share your project
+        .alt-button
+                a(href="/project/create/new" style="color:white;") Share
