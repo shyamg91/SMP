@@ -812,9 +812,7 @@ label {
       linear-gradient(225deg, hsla(293, 93%, 48%, 1) 10%, hsla(293, 93%, 48%, 0) 80%),
       linear-gradient(315deg, hsla(130, 96%, 45%, 1) 100%, hsla(130, 96%, 45%, 0) 70%); */
     opacity: 0.6;
-    z-index: 1;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); }
+    z-index: 1; }
   .project__hero img {
     height: 100%;
     width: 100%;
@@ -822,9 +820,7 @@ label {
     right: 0;
     position: absolute;
     left: 0;
-    object-fit: cover;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); }
+    object-fit: cover; }
 
 .tags {
   margin: 0;

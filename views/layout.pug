@@ -10,19 +10,19 @@ html
     block header
       header
         nav.nav
-          .nav__section.nav__section--pages
-            li.nav__item
+          li.nav__item
               a.nav__link.nav__link--logo(href="/")
-               <span>Support My Project</span>
+               <span style="font-weight:600;font-size:16px;">Support My Project</span>
+          .nav__section.nav__section--search
+            .search
+              input.search__input(type="text" placeholder="Search for projects" name="search" style="border-radius:22px;")
+              .search__results
+          .nav__section.nav__section--pages
             each item in h.menu
               li.nav__item
                 a.nav__link(href=item.slug, class=(currentPath.startsWith(item.slug) ? 'nav__link--active' : ''))
                   // != h.icon(item.icon)
                   span #{item.title}
-          .nav__section.nav__section--search
-            .search
-              input.search__input(type="text" placeholder="Search for projects" name="search")
-              .search__results
           .nav__section.nav__section--user
             if user
               li.nav__item: a.nav__link(href="/logout", class=(currentPath.startsWith('/logout') ? 'nav__link--active' : ''))

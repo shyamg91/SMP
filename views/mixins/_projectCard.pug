@@ -9,14 +9,15 @@ mixin projectCard(project = {})
                 != h.icon('pencil')
       img(src=`${project.cover || '/uploads/store.png'}`) 
     a(href=`/project/${project.slug}` class="store__details") 
-      ul(style={'padding' : '0px 10px;margin-top:30px;'}).tags
-        each tag in project.tags
-          .categories(style="color:#949494;font-size:12px;")
-            label(for="choice" class="tag__text" style="padding:.4rem .6rem")=  tag
-      p(style={'padding' : '0px 10px'}) 
+      p(style={'padding' : '0px 10px;margin:10px 0px;'}) 
         span(style="font-weight:600")= project.name  
         |  - 
         span(style="font-size:14px;font-weight:200")=  project.tagline.split(' ').slice(0,25).join(' ')
-      p(style="font-size:14px;font-weight:200;padding:0px 10px;")
-        span.fa.fa-map-marker.fa-lg
-        span(style="margin:0px 6px;")= project.location
+      .second__section(style="font-size:14px;font-weight:200;padding:0px 10px;")
+        .location(style="display:inline-block;")
+          span.fa.fa-map-marker.fa-lg
+          span(style="margin:0px 6px;")= project.location
+        ul(style={'padding' : '0px 3px;margin-top:10px;margin-bottom:10px;width:80%;display:-webkit-inline-box'}).tags
+          each tag in project.tags
+            .categories(style="color:#949494;font-size:12px;display:inline-block;")
+              label(for="choice" class="tag__text" style="padding:.4rem .6rem")=  tag
